@@ -22,7 +22,7 @@ import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signUpSchema } from "@/schemas/signUpSchema";
 
-export default function SugnUpForm() {
+export default function SignUpForm() {
   const [username, setUsername] = useState("");
   const [usernameMessage, setusernameMessage] = useState("");
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
@@ -121,7 +121,7 @@ export default function SugnUpForm() {
                   {!isCheckingUsername && usernameMessage && (
                     <p
                       className={`text-sm ${
-                        usernameMessage === "Username is Unique"
+                        usernameMessage === "Username is unique"
                           ? "text-green-500"
                           : "text-red-500"
                       }`}
