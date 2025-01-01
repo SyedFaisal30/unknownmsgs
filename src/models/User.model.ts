@@ -2,6 +2,7 @@ import mongoose,{Schema,Document} from "mongoose";
 import { exitCode } from "process";
 
 export interface Message extends Document{
+    _id: string;
     content:string,
     createdAt:Date,
 }

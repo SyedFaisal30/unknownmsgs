@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const MessageSchmea=z.object({
+export const messageSchmea=z.object({
     content:z
     .string()
     .min(10,{message:"Content must be at least 10 characters long"})
