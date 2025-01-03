@@ -10,16 +10,17 @@ export const authOptions: NextAuthOptions = {
             id:'credentials',
             name:'Credentials',
             credentials:{
-                email:{label:'Email',type:'text'},
+                email:{label:'Email or Username',type:'text'},
                 password:{label:'Password',type:'password'},
             },
             async authorize(credentials: any): Promise<any>{
                 await dbConnect();
+                console.log("Credentials received:", credentials);
                 try {
                     const user = await UserModel.findOne({
                         $or:[
-                            {email:credentials.identifier},
-                            {username:credentials.identifier},
+                            {email:credentials.email},
+                            {username:credentials.email},
                         ],
                     });
                     if(!user){
@@ -38,8 +39,7 @@ export const authOptions: NextAuthOptions = {
                         throw new Error("Incorrect Password");
                     }
                 } catch (err: any)  {
-                    throw new Error(err);
-                }
+                    throw new Error(err.message || "Something went wrong during login.");                }
             },
         }),
     ],

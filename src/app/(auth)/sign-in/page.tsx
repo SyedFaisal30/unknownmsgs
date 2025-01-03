@@ -36,7 +36,8 @@ export default function SignInForm() {
       email: data.identifier,
       password: data.password,
     });
-
+    console.log(result);
+    
     if (result?.error) {
       if (result.error === "CredentialsSignin") {
         toast({
@@ -47,7 +48,7 @@ export default function SignInForm() {
       } else {
         toast({
           title: "Something went wrong",
-          description: result.error,
+          description: "Please try again later",
           variant: "destructive",
         });
       }
