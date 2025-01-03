@@ -4,11 +4,14 @@ import mongoose from "mongoose";
 import { User } from "next-auth";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
+import { NextResponse } from "next/server";
 
-export async function GET (reqyest: Request){
+export async function GET (request: Request){
     await dbConnect();
 
     const session = await getServerSession(authOptions);
+    console.log(session);
+
     const _user : User =session?.user
 
     if(!session || !_user){
@@ -34,6 +37,8 @@ export async function GET (reqyest: Request){
                 {$group : {_id : "$_id",messages : {$push : "$messages"}}}
             ]
         ).exec();
+        console.log(user);  // Check the response from the aggregation
+
 
         if (!user ||  user.length === 0) {
             return Response.json(
