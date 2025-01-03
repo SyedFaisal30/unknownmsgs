@@ -20,9 +20,10 @@ export const authOptions: NextAuthOptions = {
                     const user = await UserModel.findOne({
                         $or:[
                             {email:credentials.email},
-                            {username:credentials.email},
+                            {username:credentials.identifier},
                         ],
                     });
+                    console.log("Found user:", user)
                     if(!user){
                         throw new Error("User not found with this Email!!");
                     }
@@ -33,11 +34,10 @@ export const authOptions: NextAuthOptions = {
                         credentials.password,
                         user.password
                     );
-                    if(!isPasswordCorrect){
-                        return user;
-                    }else{
+                    if (!isPasswordCorrect) {
                         throw new Error("Incorrect Password");
-                    }
+                      }
+                      return user;
                 } catch (err: any)  {
                     throw new Error(err.message || "Something went wrong during login.");                }
             },

@@ -36,7 +36,7 @@ export default function SignInForm() {
       email: data.identifier,
       password: data.password,
     });
-    console.log(result);
+    console.log("Sign In Result ",result);
     
     if (result?.error) {
       if (result.error === "CredentialsSignin") {
