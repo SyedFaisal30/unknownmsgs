@@ -5,6 +5,7 @@ import UserModel from "@/models/User.model";
 import { User } from "next-auth";
 
 
+// updating message acceptance status
 export async function POST(request:Request) {
     await dbConnect();
 
@@ -68,6 +69,7 @@ export async function POST(request:Request) {
     }
 }
 
+//retirving message acceptance status
 export async function GET(request:Request) {
     await dbConnect();
 
