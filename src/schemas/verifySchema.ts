@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const AcceptMesaageSchema = z.object({
-    acceptMessage:z.boolean(),
+export const verifySchema = z.object({
+    code:z.string().length(6,"Verfication Code must be 6 digits")
 });

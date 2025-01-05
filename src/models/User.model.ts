@@ -1,5 +1,4 @@
 import mongoose,{Schema,Document} from "mongoose";
-import { exitCode } from "process";
 
 export interface Message extends Document{
     _id: string;
@@ -66,7 +65,6 @@ const UserSchema: Schema<User>=new mongoose.Schema({
     messages:[MessageSchema],
 });
 
-const UserModel=(mongoose.models.User as mongoose.Model<User>) || mongoose.model<User
->("User",UserSchema);
+const UserModel=(mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User",UserSchema);
 
 export default UserModel;
