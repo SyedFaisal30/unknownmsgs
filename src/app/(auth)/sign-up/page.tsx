@@ -140,7 +140,7 @@ export default function SignUpForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <Input {...field} name="email" />
-                  <p className="text-muted text-gray-400 text-sm">
+                  <p className="text-muted text-black-400 text-sm">
                     We will send you a verification code
                   </p>
                   <FormMessage />
@@ -153,10 +153,7 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} name="email" />
-                  <p className="text-muted text-gray-400 text-sm">
-                    We will send you a verification code
-                  </p>
+                  <Input type="password" {...field} />
                   <FormMessage />
                 </FormItem>
               )}
